@@ -3,7 +3,7 @@ import ProductCard from './ProductCard'
 
 export default function ProductList() {
 	return (
-		<ul className='flex gap-[30px] p-[10px]'>
+		<ul className='flex gap-[30px] p-[10px] flex-wrap justify-center'>
 			{PRODUCTS.map((product) => (
 				<li
 					key={product.name}
