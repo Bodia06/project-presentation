@@ -12,3 +12,5 @@ const PRODUCTS = [
 			'https://itreseller.pl/wp-content/uploads/2024/09/Apple-iPhone-16-Pro-hero-240909_inline.jpg.large_.jpg',
 	},
 ]
+
+export { PRODUCTS }
