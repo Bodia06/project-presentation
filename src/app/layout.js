@@ -16,8 +16,8 @@ export const metadata = {
 export default function RootLayout({ children }) {
 	return (
 		<html lang='en'>
-			<BottomNav />
 			<body className={`${geistSans.variable} antialiased`}>
+				<BottomNav />
 				<CartProvider>{children}</CartProvider>
 			</body>
 		</html>
