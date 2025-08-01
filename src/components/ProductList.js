@@ -1,12 +1,11 @@
-import { PRODUCTS } from '@/data/product'
 import ProductCard from './ProductCard'
 
-export default function ProductList() {
+export default function ProductList({ products }) {
 	return (
 		<ul className='flex gap-[30px] p-[10px] flex-wrap justify-center'>
-			{PRODUCTS.map((product) => (
+			{products.map((product) => (
 				<li
-					key={product.name}
+					key={product.productCod}
 					className='flex flex-col max-w-[550px] min-w-[500px] justify-center items-center overflow-hidden  rounded-[20px] shadow-[0_0_5px_black]'
 				>
 					<ProductCard product={product} />
