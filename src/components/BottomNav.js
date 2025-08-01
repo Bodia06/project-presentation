@@ -37,7 +37,7 @@ export default function BottomNav() {
 					<li>
 						<Link
 							className='hover:text-yellow-400 transition-colors duration-300'
-							href='/koszyk'
+							href='/cart'
 						>
 							Koszyk
 						</Link>
