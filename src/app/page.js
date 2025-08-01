@@ -22,7 +22,6 @@ export default function Home() {
 
 	return (
 		<>
-			<BottomNav />
 			<ProductList products={products} />
 		</>
 	)
