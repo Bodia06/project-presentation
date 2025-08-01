@@ -8,7 +8,7 @@ const PRODUCTS = [
 	},
 	{
 		productCod: 2,
-		name: 'iPhone 16 Pro',
+		name: 'iPhone 18 Pro',
 		price: 3200,
 		imageUrl:
 			'https://itreseller.pl/wp-content/uploads/2024/09/Apple-iPhone-16-Pro-hero-240909_inline.jpg.large_.jpg',

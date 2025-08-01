@@ -25,27 +25,42 @@ function writeProductData(productCod, name, price, imageUrl) {
 	})
 }
 
-function productInitializer(pr) {
-	pr.forEach(async (product) => {
-		try {
-			const snapshot = await get(
-				child(ref(db), `products/${product.productCod}`)
-			)
-			if (!snapshot.exists()) {
-				writeProductData(
-					product.productCod,
-					product.name,
-					product.price,
-					product.imageUrl
-				)
-				console.log(`Product "${product.name}" added`)
-			} else {
-				console.log(`Product "${product.name}" already exists`)
+async function productInitializer(localProducts) {
+	try {
+		const snapshot = await get(ref(db, 'products'))
+		const dbProducts = snapshot.exists() ? snapshot.val() : {}
+
+		const localProductsMap = {}
+		localProducts.forEach((p) => {
+			localProductsMap[p.productCod] = p
+		})
+
+		for (const localProduct of localProducts) {
+			const dbProduct = dbProducts[localProduct.productCod]
+			if (
+				!dbProduct ||
+				dbProduct.ProductName !== localProduct.name ||
+				dbProduct.ProductPrice !== localProduct.price ||
+				dbProduct.ProductImgUrl !== localProduct.imageUrl
+			) {
+				await set(ref(db, 'products/' + localProduct.productCod), {
+					ProductName: localProduct.name,
+					ProductPrice: localProduct.price,
+					ProductImgUrl: localProduct.imageUrl,
+				})
+				console.log(`Product "${localProduct.name}" added or updated`)
 			}
-		} catch (error) {
-			console.error('Error checking product existence:', error)
 		}
-	})
+
+		for (const dbProductCod in dbProducts) {
+			if (!localProductsMap[dbProductCod]) {
+				await set(ref(db, 'products/' + dbProductCod), null)
+				console.log(`Product with code "${dbProductCod}" removed`)
+			}
+		}
+	} catch (error) {
+		console.error('Error syncing products:', error)
+	}
 }
 
 async function takeProductsData() {

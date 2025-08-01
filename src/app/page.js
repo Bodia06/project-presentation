@@ -1,5 +1,5 @@
 'use client'
-import BottomNav from '@/components/BottomNav'
+
 import ProductList from '@/components/ProductList'
 import { productInitializer, takeProductsData } from '@/firebase/config'
 import { useEffect, useState } from 'react'
@@ -9,15 +9,13 @@ export default function Home() {
 	const [products, setProducts] = useState([])
 
 	useEffect(() => {
-		productInitializer(PRODUCTS)
-	}, [])
-
-	useEffect(() => {
-		const load = async () => {
+		const initializeAndLoad = async () => {
+			await productInitializer(PRODUCTS)
 			const data = await takeProductsData()
 			setProducts(data)
 		}
-		load()
+
+		initializeAndLoad()
 	}, [])
 
 	return (
