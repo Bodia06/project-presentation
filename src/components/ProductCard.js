@@ -1,5 +1,9 @@
+import { useCart } from '@/context/CartContext'
+
 export default function ProductCard({ product }) {
 	const { ProductName, ProductPrice, ProductImgUrl } = product
+	const { addToCart } = useCart()
+
 	return (
 		<>
 			<div className='w-full h-[500px] overflow-hidden  mb-[20px]'>
@@ -13,7 +17,10 @@ export default function ProductCard({ product }) {
 				<h2 className='text-[25px] font-[600]'>{ProductName}</h2>
 				<p className='text-[17px] font-[500]'>{`${ProductPrice} zł`}</p>
 			</div>
-			<button className='p-[10px] border-[1px] rounded-[10px] bg-green-400 mb-[10px] cursor-pointer hover:bg-green-500'>
+			<button
+				className='p-[10px] border-[1px] rounded-[10px] bg-green-400 mb-[10px] cursor-pointer hover:bg-green-500'
+				onClick={() => addToCart(product)}
+			>
 				Dodaj do koszyka
 			</button>
 		</>
