@@ -1,4 +1,5 @@
 import { useCart } from '@/context/CartContext'
+import Link from 'next/link'
 
 export default function ProductCard({ product }) {
 	const { ProductName, ProductPrice, ProductImgUrl } = product
@@ -14,7 +15,9 @@ export default function ProductCard({ product }) {
 				></img>
 			</div>
 			<div className='flex flex-col items-center justify-center gap-[10px] mb-[10px]'>
-				<h2 className='text-[25px] font-[600]'>{ProductName}</h2>
+				<h2 className='text-[25px] font-[600]'>
+					<Link href={`/product/${product.productCod}`}>{ProductName}</Link>
+				</h2>
 				<p className='text-[17px] font-[500]'>{`${ProductPrice} zł`}</p>
 			</div>
 			<button
