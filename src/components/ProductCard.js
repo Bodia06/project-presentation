@@ -6,7 +6,7 @@ export default function ProductCard({ product }) {
 
 	return (
 		<>
-			<div className='w-full h-[500px] overflow-hidden  mb-[20px]'>
+			<div className='w-full h-[450px] overflow-hidden  mb-[20px]'>
 				<img
 					className='object-cover object-top w-full h-full border-[1px_solid_black]'
 					src={ProductImgUrl}

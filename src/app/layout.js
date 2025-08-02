@@ -17,8 +17,8 @@ export default function RootLayout({ children }) {
 	return (
 		<html lang='en'>
 			<body className={`${geistSans.variable} antialiased`}>
-				<BottomNav />
 				<CartProvider>{children}</CartProvider>
+				<BottomNav />
 			</body>
 		</html>
 	)

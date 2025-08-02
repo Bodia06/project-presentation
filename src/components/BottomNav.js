@@ -23,7 +23,7 @@ export default function BottomNav() {
 	}
 
 	return (
-		<header className='w-full h-[100px] mb-[40px] bg-gray-800'>
+		<footer className='w-full h-[100px] fixed bottom-0 bg-gray-800'>
 			<nav className='w-full h-full p-4 flex items-center'>
 				<ul className='w-full flex items-center justify-center gap-8 text-white text-lg font-semibold'>
 					<li>
@@ -63,6 +63,6 @@ export default function BottomNav() {
 					)}
 				</ul>
 			</nav>
-		</header>
+		</footer>
 	)
 }
