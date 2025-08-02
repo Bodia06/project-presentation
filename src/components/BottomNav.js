@@ -6,10 +6,13 @@ import { onAuthStateChanged } from 'firebase/auth'
 import { auth } from '@/firebase/config'
 import { useRouter } from 'next/navigation'
 import UserIcon from '@/images/userIcon'
+import { useCart } from '@/context/CartContext'
 
 export default function BottomNav() {
 	const router = useRouter()
 	const [user, setUser] = useState(null)
+	const { cart, remove, increase, decrease, clearCart, totalQuantity } =
+		useCart()
 
 	useEffect(() => {
 		const unregistration = onAuthStateChanged(auth, (currentUser) => {
@@ -34,13 +37,20 @@ export default function BottomNav() {
 							Strona główna
 						</Link>
 					</li>
-					<li>
+					<li className='flex items-center gap-[10px]'>
 						<Link
 							className='hover:text-yellow-400 transition-colors duration-300'
 							href='/cart'
 						>
-							Koszyk
+							Koszyk{' '}
 						</Link>
+						{totalQuantity < 1 ? (
+							''
+						) : (
+							<span className='flex justify-center items-center w-[50px] h-[50px] border-[1px] border-yellow-400 border-solid rounded-[100%]'>
+								{totalQuantity}
+							</span>
+						)}
 					</li>
 					{user ? (
 						<div className='flex gap-[20px] flex-row-reverse items-center'>

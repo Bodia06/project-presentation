@@ -2,9 +2,9 @@
 import { useCart } from '@/context/CartContext'
 
 export default function CartSummary() {
-	const { cart, remove, increase, decrease, clearCart } = useCart()
+	const { cart, remove, increase, decrease, clearCart, totalQuantity } =
+		useCart()
 
-	const totalQuantity = cart.reduce((acc, item) => acc + item.quantity, 0)
 	const totalPrice = cart.reduce(
 		(acc, item) => acc + item.quantity * item.ProductPrice,
 		0

@@ -2,7 +2,7 @@ import ProductCard from './ProductCard'
 
 export default function ProductList({ products }) {
 	return (
-		<ul className='flex gap-[30px] p-[10px] flex-wrap justify-center'>
+		<ul className='flex  gap-[30px] mb-[120px] p-[10px] flex-wrap justify-center'>
 			{products.map((product) => (
 				<li
 					key={product.productCod}

@@ -6,6 +6,8 @@ const CartContext = createContext()
 export const CartProvider = ({ children }) => {
 	const [cart, setCart] = useState([])
 
+	const totalQuantity = cart.reduce((acc, item) => acc + item.quantity, 0)
+
 	useEffect(() => {
 		const storedCard = localStorage.getItem('cart')
 		if (storedCard) {
@@ -60,7 +62,15 @@ export const CartProvider = ({ children }) => {
 
 	return (
 		<CartContext.Provider
-			value={{ cart, addToCart, increase, decrease, remove, clearCart }}
+			value={{
+				cart,
+				addToCart,
+				increase,
+				decrease,
+				remove,
+				clearCart,
+				totalQuantity,
+			}}
 		>
 			{children}
 		</CartContext.Provider>
